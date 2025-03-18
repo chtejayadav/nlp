@@ -4,7 +4,7 @@ import joblib
 import re
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 
@@ -27,7 +27,7 @@ X_train, X_test, y_train, y_test = train_test_split(df["Text"], df["Sentiment"],
 # Build NLP Pipeline
 model = Pipeline([
     ("tfidf", TfidfVectorizer(stop_words="english", max_features=5000)),
-    ("classifier", SVC())
+    ("classifier", LogisticRegression())
 ])
 
 # Train Model
