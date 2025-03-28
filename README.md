@@ -1,4 +1,4 @@
-# 🚀 NLP Project
+# NLP Project
 
 ## 📜 Project Overview
 This project leverages advanced Natural Language Processing (NLP) techniques to analyze and model Twitter data. It encompasses data preprocessing, model implementation, performance evaluation, and result visualization.
