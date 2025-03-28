@@ -55,6 +55,8 @@ The dataset **twitter_training.csv** contains labeled Twitter data, which serves
 ## 🤝 Contribution Guidelines
 We welcome contributions from the open-source community. Please feel free to fork the repository, create feature branches, and submit pull requests.
 
-## 📜 License
-This project is distributed under the MIT License. See the LICENSE file for more information.
+### 👨‍💻 Author  
+Developed by: **CH TEJA YADAV**  
+📧 Email: tejayadavch@gmail.com  
+💻 GitHub: https://github.com/chtejayadav 
 
