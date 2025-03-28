@@ -8,6 +8,24 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 
+# Sidebar Description
+st.sidebar.title("📊 NLP Sentiment Analysis")
+st.sidebar.markdown("""
+### Project Overview
+This app uses NLP techniques to classify text sentiment as Positive, Negative, or Neutral. 
+
+#### Key Features:
+- ✅ Data Cleaning and Preprocessing
+- 📦 Logistic Regression Model
+- 📈 Real-time Sentiment Prediction
+- 🏷️ Sample Dataset Display
+
+💡 **How to Use:**
+1. Enter text in the input box.
+2. Click **Analyze Sentiment**.
+3. View the predicted sentiment.
+""")
+
 # Load dataset
 file_path = "twitter_training.csv"  # Ensure this is correctly placed in your working directory
 df = pd.read_csv(file_path, header=None, names=["Category", "Sentiment", "Text"])
@@ -48,16 +66,22 @@ st.write("Enter text below to predict sentiment.")
 # User Input
 user_text = st.text_area("Enter your text here:", "")
 
-if st.button("Analyze Sentiment"):
+if st.button("Analyze Sentiment", help="Click to predict sentiment"):
     if user_text.strip():
         cleaned_text = re.sub(r"[^a-zA-Z0-9\s]", "", user_text.lower())
         prediction = model.predict([cleaned_text])[0]
         sentiment = label_encoder.inverse_transform([prediction])[0]
 
-        st.success(f"🔍 Predicted Sentiment: **{sentiment}**")
+        # Color-coded Sentiment Output
+        if sentiment == "Positive":
+            st.success(f"🟢 **Positive Sentiment**")
+        elif sentiment == "Negative":
+            st.error(f"🔴 **Negative Sentiment**")
+        else:
+            st.info(f"🔵 **Neutral Sentiment**")
     else:
         st.warning("⚠️ Please enter some text to analyze.")
 
 # Display dataset
-if st.checkbox("Show Sample Dataset"):
+if st.checkbox("📂 Show Sample Dataset"):
     st.write(df.sample(10))
